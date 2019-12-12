@@ -1,40 +1,31 @@
-import React, {PureComponent} from 'react';
+import React, { PureComponent } from 'react';
 import moment from 'moment';
 
-
-const defaultContainer = ({children}) => <div className="control-panel">{children}</div>;
+const defaultContainer = ({ children }) => <div className="control-panel">{children}</div>;
 
 export default class ControlPanel extends PureComponent {
 
-
   render() {
     const Container = this.props.containerComponent || defaultContainer;
-    const {settings} = this.props;
+    const { settings } = this.props;
 
-    const getWeek=(number)=>{
-      let date = moment('2019').add(number, 'weeks');
-      return date.format('DD-MM-YYYY')
+    const getDate = (number) => {
+      let date = moment('2019').add(number - 1, 'months');
+      return date.format('MMM-YYYY')
     }
 
     return (
       <Container>
-        <h3>Interactive GeoJSON</h3>
+        <h3>Events by state</h3>
         <p>
-          Map showing cfs units <b>{getWeek(settings.week)}</b>. Hover over a
-          state to see details.
-        </p>
+          Map showing the number of CISF events for the month of
+        <b>{getDate(settings.month)}</b>. Hover over a state to see details.
+      </p>
         <hr />
 
-        <div key={'week'} className="input">
-          <label>Week</label>
-          <input
-            type="range"
-            value={settings.week}
-            min={0}
-            max={53}
-            step={1}
-            onChange={evt => this.props.onChange('week', evt.target.value)}
-          />
+        <div key={'month'} className="input">
+          <label>Month</label>
+          <input type="range" value={settings.month} min={1} max={12} step={1} onChange={evt => this.props.onChange('month', evt.target.value)} />
         </div>
       </Container>
     );

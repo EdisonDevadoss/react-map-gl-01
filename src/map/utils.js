@@ -1,9 +1,9 @@
 
-import {range} from 'd3-array';
-import {scaleQuantile} from 'd3-scale';
+import { range } from 'd3-array';
+import { scaleQuantile } from 'd3-scale';
 
 export function updatePercentiles(featureCollection, accessor) {
-  const {features} = featureCollection;
+  const { features } = featureCollection;
   const scale = scaleQuantile()
     .domain(features.map(accessor))
     .range(range(9));
