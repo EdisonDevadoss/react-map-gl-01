@@ -3,7 +3,7 @@ import logo from './logo.svg';
 import './App.css';
 import ReactMapGL, {Source, Layer} from 'react-map-gl';
 
-const mapbox_api = 'pk.eyJ1IjoiZWRpc29uZGV2YWRvc3MiLCJhIjoiY2s0MTNweHlhMDdwZDNwcG95cmJraGl6dyJ9.aUK57pw316_tz92_mwsagA';
+const mapbox_api = '';
 
 function App() {
   const [viewport, setViewport] = useState({
